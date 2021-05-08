@@ -19,41 +19,18 @@ import java.util.Map;
 public class GeneralClassifier extends Classifier{
 
     private static final String TAG = "ImageClassifier Class";
-    /** file path*/
-    public static final String modelPath = "mobilenet_v3.tflite";
-    public static final String labelPath = "labels_list.txt";
-
-    /** Define the Size of Image*/
-    private static final int targetHeight = 224;
-    private static final int targetWidth = 224;
-
-    /**Define normalizeOp params*/
-    private static final float mean = 0;
-    private static final float stddev = 255;
-
     /** Labels corresponding to the output of the vision model. */
     private final TensorBuffer probabilityBuffer;
 
-    private preProcessUtils imageData;
-
-    GeneralClassifier(Activity activity) {
-        super(activity);
-        // init imageData Class
-        try{
-            imageData = new preProcessUtils();
-        } catch (Exception e) {
-            Log.d(TAG, "cannot get ImageData from preProcessUtils Class!");
-            e.printStackTrace();
-        }
-
+    GeneralClassifier(ByteBuffer modelFile, List<String> labelFile) {
+        super(modelFile, labelFile);
         // Create a container for the result and specify that this is a quantized model.
         // Hence, the 'DataType' is defined as UINT8 (8-bit unsigned integer)
         probabilityBuffer = TensorBuffer.createFixedSize(new int[]{1, getNumLabels()}, DataType.FLOAT32);
     }
 
     @Override
-    protected void runInference(Bitmap bitmap) {
-        ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
+    protected void runInference(ByteBuffer imageInput) {
         tflite.run(imageInput, probabilityBuffer.getBuffer().rewind());
     }
 

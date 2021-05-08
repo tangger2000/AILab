@@ -33,8 +33,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CameraActivity extends AppCompatActivity {
     private static final String TAG = CameraActivity.class.getName();
@@ -58,6 +61,25 @@ public class CameraActivity extends AppCompatActivity {
     private GeneralClassifier classifier;
     private TextView textView;
 
+    /** Define the Size of Image*/
+    private static final int targetHeight = 224;
+    private static final int targetWidth = 224;
+
+    /**Define normalizeOp params*/
+    private static final float mean = 0;
+    private static final float stddev = 255;
+
+    /** file path*/
+    private static final String modelPath = "mobilenet_v3.tflite";
+    private static final String labelPath = "labels_list.txt";
+
+    /** model file and label file*/
+    protected ByteBuffer modelFile;
+    protected List<String> labelFile;
+
+    /** preProcessUtils Class*/
+    protected preProcessUtils imageData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,15 +88,25 @@ public class CameraActivity extends AppCompatActivity {
         if (!hasPermission()) {
             requestPermission();
         }
-//        // 加载模型和标签
-//        try {
-//            classifier = new GeneralClassifier(CameraActivity.this);
-//            Toast.makeText(CameraActivity.this, "模型加载成功！", Toast.LENGTH_SHORT).show();
-//        } catch (Exception e) {
-//            Toast.makeText(CameraActivity.this, "模型加载失败！", Toast.LENGTH_SHORT).show();
-//            e.printStackTrace();
-//            finish();
-//        }
+        // 加载模型和标签
+        /* init LoadModel class*/
+        // load model and label
+        LoadModel loadModel = new LoadModel();
+        try{
+            modelFile = loadModel.getModel(this, modelPath);
+            labelFile = loadModel.getLabels(this, labelPath);
+        } catch (IOException e) {
+            Log.d(TAG, "load Model and Label failed!");
+            e.printStackTrace();
+        }
+
+        // init imageData Class
+        try{
+            imageData = new preProcessUtils();
+        } catch (Exception e) {
+            Log.d(TAG, "cannot get ImageData from preProcessUtils Class!");
+            e.printStackTrace();
+        }
 
         // 获取控件
         mTextureView = findViewById(R.id.texture_view);
@@ -87,7 +119,7 @@ public class CameraActivity extends AppCompatActivity {
         super.onResume();
         // 加载模型和标签
         try {
-            classifier = new GeneralClassifier(CameraActivity.this);
+            classifier = new GeneralClassifier(modelFile, labelFile);
             Toast.makeText(CameraActivity.this, "模型加载成功！", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(CameraActivity.this, "模型加载失败！", Toast.LENGTH_SHORT).show();
@@ -134,7 +166,8 @@ public class CameraActivity extends AppCompatActivity {
         // 获取相机捕获的图像
         Bitmap bitmap = mTextureView.getBitmap();
         try {
-            SpannableStringBuilder builder = classifier.classifyFrame(bitmap);
+            ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
+            SpannableStringBuilder builder = classifier.classifyFrame(imageInput);
             textView.setText(builder);
         } catch (Exception e) {
             e.printStackTrace();

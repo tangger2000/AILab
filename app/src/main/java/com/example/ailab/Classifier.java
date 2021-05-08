@@ -44,17 +44,9 @@ public abstract class Classifier {
                     RESULTS_TO_SHOW,
                     (o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
 
-    Classifier(Activity activity) {
-        /* init LoadModel class*/
-        // load model and label
-        LoadModel loadModel = new LoadModel();
-        try{
-            modelFile = loadModel.getModel(activity, GeneralClassifier.modelPath);
-            labelFile = loadModel.getLabels(activity, GeneralClassifier.labelPath);
-        } catch (IOException e) {
-            Log.d(TAG, "load Model and Label failed!");
-            e.printStackTrace();
-        }
+    Classifier(ByteBuffer modelFile, List<String> labelFile) {
+        this.modelFile = modelFile;
+        this.labelFile = labelFile;
 
         Interpreter.Options options = (new Interpreter.Options());
         options.setNumThreads(NUM_THREADS);
@@ -73,7 +65,7 @@ public abstract class Classifier {
 
     /** Classifies a frame from the preview stream.
      * @return builder*/
-    SpannableStringBuilder classifyFrame(Bitmap bitmap) {
+    SpannableStringBuilder classifyFrame(ByteBuffer imageInput) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
         if (tflite == null) {
@@ -83,7 +75,7 @@ public abstract class Classifier {
 
         // Here's where the magic happens!!!
         long startTime = SystemClock.uptimeMillis();
-        runInference(bitmap);
+        runInference(imageInput);
         long endTime = SystemClock.uptimeMillis();
         Log.d(TAG, "Timecost to run model inference: " + (endTime - startTime));
 
@@ -150,7 +142,7 @@ public abstract class Classifier {
 
     protected abstract List<Map.Entry<String, Float>> getTopKLabels(boolean softmax);
 
-    protected abstract void runInference(Bitmap bitmap);
+    protected abstract void runInference(ByteBuffer imageInput);
 
     protected int getNumLabels() {
         return labelFile.size();

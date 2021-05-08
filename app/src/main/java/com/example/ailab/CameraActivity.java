@@ -108,15 +108,6 @@ public class CameraActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // 获取控件
-        mTextureView = findViewById(R.id.texture_view);
-        textView = findViewById(R.id.result_text);
-    }
-
-    @Override
-    protected void onResume() {
-        initStatus();
-        super.onResume();
         // 加载模型和标签
         try {
             classifier = new GeneralClassifier(modelFile, labelFile);
@@ -126,6 +117,16 @@ public class CameraActivity extends AppCompatActivity {
             e.printStackTrace();
             finish();
         }
+
+        // 获取控件
+        mTextureView = findViewById(R.id.texture_view);
+        textView = findViewById(R.id.result_text);
+    }
+
+    @Override
+    protected void onResume() {
+        initStatus();
+        super.onResume();
     }
 
     @Override

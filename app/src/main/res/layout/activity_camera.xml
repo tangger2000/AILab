@@ -14,31 +14,11 @@
         android:background="#00000000"
         android:orientation="vertical">
 
-
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_500">
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="#66000000">
-
-<!--                <ImageView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:src="@drawable/tfl2_logo" />-->
-            </androidx.appcompat.widget.Toolbar>
-        </FrameLayout>
-
         <com.example.ailab.AutoFitTextureView
             android:id="@+id/texture_view"
             android:layout_width="match_parent"
-            android:layout_height="525dp"
+            android:layout_height="match_parent"
             android:layout_above="@+id/result_text"
-            android:layout_below="@+id/container"
             android:layout_marginBottom="0dp" />
 
 

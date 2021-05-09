@@ -53,12 +53,12 @@ public class CameraActivity extends AppCompatActivity {
     private Size mPreviewSize;
     private boolean mCapturing;
 
-    private AutoFitTextureView mTextureView;
-
     private final Object lock = new Object();
     private boolean runClassifier = false;
     private ArrayList<String> classNames;
     private GeneralClassifier classifier;
+
+    private AutoFitTextureView mTextureView;
     private TextView textView;
 
     /** Define the Size of Image*/
@@ -127,6 +127,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onResume() {
         initStatus();
         super.onResume();
+
     }
 
     @Override

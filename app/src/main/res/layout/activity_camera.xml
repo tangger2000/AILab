@@ -55,7 +55,7 @@
                 app:srcCompat="@android:drawable/ic_menu_camera" />
 
             <ImageButton
-                android:id="@+id/album_button"
+                android:id="@+id/select_img_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

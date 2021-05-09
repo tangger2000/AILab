@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity{
                     Thread.sleep(1000);
                     Intent intent = new Intent(MainActivity.this,CameraActivity.class);
                     startActivity(intent);
+                    finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

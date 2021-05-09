@@ -2,8 +2,11 @@ package com.example.ailab;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -16,16 +19,23 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +43,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -60,6 +71,9 @@ public class CameraActivity extends AppCompatActivity {
 
     private AutoFitTextureView mTextureView;
     private TextView textView;
+    private ImageButton select_img_button;
+    private ImageButton function_button;
+    private ImageButton capture_img_button;
 
     /** Define the Size of Image*/
     private static final int targetHeight = 224;
@@ -118,15 +132,30 @@ public class CameraActivity extends AppCompatActivity {
             finish();
         }
 
-        // 获取控件
+        //获取控件，指定操作
         mTextureView = findViewById(R.id.texture_view);
         textView = findViewById(R.id.result_text);
+        capture_img_button = findViewById(R.id.capture_img_button);
+        select_img_button = findViewById(R.id.select_img_button);
+        function_button = findViewById(R.id.function_button);
+
     }
 
     @Override
     protected void onResume() {
         initStatus();
         super.onResume();
+        //打开相册,选择图像
+        select_img_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 打开相册
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 1);
+            }
+        });
+
 
     }
 
@@ -163,7 +192,7 @@ public class CameraActivity extends AppCompatActivity {
             };
 
 
-    // 预测相机捕获的图像
+    // 预测视频流的图像
     private void predict() {
         // 获取相机捕获的图像
         Bitmap bitmap = mTextureView.getBitmap();
@@ -351,6 +380,32 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
+    //响应选择图片控件
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String imagePath;
+        if(requestCode == 1) {
+            if (data == null) {
+                Log.w("onActivityResult", "user photo data is null");
+            }
+            Uri imageUri = data.getData();
+            imagePath = getPathFromURI(CameraActivity.this, imageUri);
+            // 跳转到处理页面，同时利用intent传递图像的文件路径
+            Intent intent = new Intent(CameraActivity.this, ImageActivity.class);
+            //传递参数
+            intent.putExtra("imagePath", imagePath);
+            intent.putExtra("modelPath", modelPath);
+            intent.putExtra("labelPath", labelPath);
+            intent.putExtra("targetH", targetHeight);
+            intent.putExtra("targetW", targetWidth);
+            intent.putExtra("mean", mean);
+            intent.putExtra("stddev", stddev);
+
+            startActivity(intent);
+        }
+    }
+
     // 关闭相机
     private void closeCamera() {
         if (mCaptureSession != null) {
@@ -425,6 +480,20 @@ public class CameraActivity extends AppCompatActivity {
         mInferHandler.post(periodicClassify);
     }
 
+    // 根据相册的Uri获取图片的路径
+    public static String getPathFromURI(Context context, Uri uri) {
+        String result;
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        if (cursor == null) {
+            result = uri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
 
     // check had permission
     private boolean hasPermission() {

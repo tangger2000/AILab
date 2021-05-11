@@ -22,7 +22,22 @@ public class GeneralClassifier extends Classifier{
     /** Labels corresponding to the output of the vision model. */
     private final TensorBuffer probabilityBuffer;
 
-    GeneralClassifier(ByteBuffer modelFile, List<String> labelFile) {
+    /** 单例实现 **/
+    private static GeneralClassifier mInstance;
+
+    public static GeneralClassifier getInstance(ByteBuffer modelFile, List<String> labelFile) {
+        if (mInstance == null){
+            synchronized (GeneralClassifier.class){
+                if (mInstance == null){
+                    Log.e(TAG, "GeneralClassifier init");
+                    mInstance = new GeneralClassifier(modelFile, labelFile);
+                }
+            }
+        }
+        return mInstance;
+    }
+
+    private GeneralClassifier(ByteBuffer modelFile, List<String> labelFile) {
         super(modelFile, labelFile);
         // Create a container for the result and specify that this is a quantized model.
         // Hence, the 'DataType' is defined as UINT8 (8-bit unsigned integer)

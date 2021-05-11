@@ -94,7 +94,7 @@ public class ImageActivity extends AppCompatActivity {
         }
 
         // 加载模型和标签
-        classifier = new GeneralClassifier(modelFile, labelFile);
+        classifier = GeneralClassifier.getInstance(modelFile, labelFile);
 //        try {
 //            classifier = new GeneralClassifier(modelFile, labelFile);
 //            Toast.makeText(ImageActivity.this, "模型加载成功！", Toast.LENGTH_SHORT).show();

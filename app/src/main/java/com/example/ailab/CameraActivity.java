@@ -124,7 +124,7 @@ public class CameraActivity extends AppCompatActivity {
 
         // 加载模型和标签
         try {
-            classifier = new GeneralClassifier(modelFile, labelFile);
+            classifier = GeneralClassifier.getInstance(modelFile, labelFile);
             Toast.makeText(CameraActivity.this, "模型加载成功！", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(CameraActivity.this, "模型加载失败！", Toast.LENGTH_SHORT).show();
@@ -388,6 +388,7 @@ public class CameraActivity extends AppCompatActivity {
         if(requestCode == 1) {
             if (data == null) {
                 Log.w("onActivityResult", "user photo data is null");
+                return;
             }
             Uri imageUri = data.getData();
             imagePath = getPathFromURI(CameraActivity.this, imageUri);

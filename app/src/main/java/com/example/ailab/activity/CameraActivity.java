@@ -114,7 +114,7 @@ public class CameraActivity extends AppCompatActivity {
         public static List<String> labelFile;
     }
 
-    public static boolean hsaPermission(Context context){
+    public static boolean hasPermission(Context context){
         for (String permission : PERMISSIONS) {
             boolean res = ContextCompat.checkSelfPermission(context,permission) == PackageManager.PERMISSION_DENIED;
             if(res){
@@ -168,7 +168,7 @@ public class CameraActivity extends AppCompatActivity {
         initModel();
 
         // 检查权限
-        if(!hsaPermission(this)){
+        if(!hasPermission(this)){
             ActivityCompat.requestPermissions(this,PERMISSIONS,PERMISSIONS_REQUEST_CODE);
         }else {
             setUpCamera();
@@ -209,10 +209,10 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
-        if(!mExecutorService.isShutdown()){
-            mExecutorService.shutdown();
-        }
+//
+//        if(!mExecutorService.isShutdown()){
+//            mExecutorService.shutdown();
+//        }
     }
 
     private void setRecordListener() {

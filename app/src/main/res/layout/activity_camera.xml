@@ -17,8 +17,7 @@
         <androidx.camera.view.PreviewView
             android:id="@+id/view_finder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#00000000"/>
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/result_text"

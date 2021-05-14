@@ -1,4 +1,4 @@
-package com.example.ailab;
+package com.example.ailab.utils;
 
 import android.graphics.Bitmap;
 

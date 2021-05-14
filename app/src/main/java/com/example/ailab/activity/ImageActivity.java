@@ -1,4 +1,4 @@
-package com.example.ailab;
+package com.example.ailab.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,12 +9,18 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.ailab.deprecated.CameraActivity;
+import com.example.ailab.R;
+import com.example.ailab.utils.Utils;
+import com.example.ailab.classifier.GeneralClassifier;
+import com.example.ailab.classifier.LoadModel;
+import com.example.ailab.utils.preProcessUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -61,30 +67,33 @@ public class ImageActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
 
         // Enable the Up button
+        assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
 
         // 获取传递的参数
         Intent intent = getIntent();
         String imagePath = intent.getStringExtra("imagePath");
-        String modelPath = intent.getStringExtra("modelPath");
-        String labelPath = intent.getStringExtra("labelPath");
-        targetHeight = intent.getIntExtra("targetH", 224);
-        targetWidth = intent.getIntExtra("targetW", 224);
-        mean = intent.getFloatExtra("mean",0);
-        stddev = intent.getFloatExtra("stddev", 255);
+        modelFile = com.example.ailab.activity.CameraActivity.Transmitter.modelFile;
+        labelFile = com.example.ailab.activity.CameraActivity.Transmitter.labelFile;
+//        String modelPath = intent.getStringExtra("modelPath");
+//        String labelPath = intent.getStringExtra("labelPath");
+//        targetHeight = intent.getIntExtra("targetH", 224);
+//        targetWidth = intent.getIntExtra("targetW", 224);
+//        mean = intent.getFloatExtra("mean",0);
+//        stddev = intent.getFloatExtra("stddev", 255);
 
-        // 加载模型和标签
-        /* init LoadModel class*/
-        // load model and label
-        LoadModel loadModel = new LoadModel();
-        try{
-            modelFile = loadModel.getModel(this, modelPath);
-            labelFile = loadModel.getLabels(this, labelPath);
-        } catch (IOException e) {
-            Log.d(TAG, "load Model and Label failed!");
-            e.printStackTrace();
-        }
-
+//        // 加载模型和标签
+//        /* init LoadModel class*/
+//        // load model and label
+//        LoadModel loadModel = new LoadModel();
+//        try{
+//            modelFile = loadModel.getModel(this, modelPath);
+//            labelFile = loadModel.getLabels(this, labelPath);
+//        } catch (IOException e) {
+//            Log.d(TAG, "load Model and Label failed!");
+//            e.printStackTrace();
+//        }
+//
         // init imageData Class
         try{
             imageData = new preProcessUtils();

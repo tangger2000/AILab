@@ -1,4 +1,4 @@
-package com.example.ailab;
+package com.example.ailab.deprecated;
 
 import android.Manifest;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -24,8 +23,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
@@ -34,7 +31,6 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +39,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileInputStream;
+import com.example.ailab.R;
+import com.example.ailab.activity.ImageActivity;
+import com.example.ailab.classifier.GeneralClassifier;
+import com.example.ailab.classifier.LoadModel;
+import com.example.ailab.utils.Utils;
+import com.example.ailab.utils.preProcessUtils;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -98,7 +100,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_camera_deprecated);
         if (!hasPermission()) {
             requestPermission();
         }
@@ -155,8 +157,6 @@ public class CameraActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-
-
     }
 
     @Override
@@ -173,7 +173,7 @@ public class CameraActivity extends AppCompatActivity {
 
 
     // 预测图片线程
-    private Runnable periodicClassify =
+    private final Runnable periodicClassify =
             new Runnable() {
                 @Override
                 public void run() {
@@ -199,7 +199,7 @@ public class CameraActivity extends AppCompatActivity {
         try {
             ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
             SpannableStringBuilder builder = classifier.classifyFrame(imageInput);
-            textView.setText(builder);
+//            textView.setText(builder);
         } catch (Exception e) {
             e.printStackTrace();
         }

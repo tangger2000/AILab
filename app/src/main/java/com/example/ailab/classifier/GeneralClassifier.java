@@ -1,7 +1,5 @@
-package com.example.ailab;
+package com.example.ailab.classifier;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.tensorflow.lite.DataType;
@@ -9,7 +7,6 @@ import org.tensorflow.lite.support.common.TensorProcessor;
 import org.tensorflow.lite.support.label.TensorLabel;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;

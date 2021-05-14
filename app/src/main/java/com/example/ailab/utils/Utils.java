@@ -1,16 +1,25 @@
-package com.example.ailab;
+package com.example.ailab.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
 import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Size;
 
 import androidx.annotation.RequiresApi;
+import androidx.camera.core.ImageProxy;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +36,65 @@ import java.util.List;
 
 
 public class Utils {
-    private static final String TAG = com.example.ailab.Utils.class.getName();
+    private static final String TAG = Utils.class.getName();
+
+    public static Bitmap toBitmap(ImageProxy image){
+        ImageProxy.PlaneProxy[] planes = image.getPlanes();
+        for (int i = 0; i < planes.length; i++) {
+            Log.i(TAG, "pixelStride  " + planes[i].getPixelStride());
+            Log.i(TAG, "rowStride   " + planes[i].getRowStride());
+            Log.i(TAG, "width  " + image.getWidth());
+            Log.i(TAG, "height  " + image.getHeight());
+            Log.i(TAG, "Finished reading data from plane  " + i);
+        }
+
+        //cameraX 获取yuv
+        ByteBuffer yBuffer = planes[0].getBuffer();
+        ByteBuffer uBuffer = planes[1].getBuffer();
+        ByteBuffer vBuffer = planes[2].getBuffer();
+
+        int ySize = yBuffer.remaining();
+        int uSize = uBuffer.remaining();
+        int vSize = vBuffer.remaining();
+
+        byte[] nv21 = new byte[ySize + uSize + vSize];
+
+        yBuffer.get(nv21, 0, ySize);
+        vBuffer.get(nv21, ySize, vSize);
+        uBuffer.get(nv21, ySize + vSize, uSize);
+
+        //获取yuvImage
+        YuvImage yuvImage = new YuvImage(nv21, ImageFormat.NV21, image.getWidth(), image.getHeight(), null);
+        //输出流
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        //压缩写入out
+        yuvImage.compressToJpeg(new Rect(0, 0, yuvImage.getWidth(), yuvImage.getHeight()), 50, out);
+        //转数组
+        byte[] imageBytes = out.toByteArray();
+        //生成bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        //旋转bitmap
+        Bitmap rotateBitmap = rotateBitmap_toBitmap(bitmap, 90);
+        image.close();
+        return rotateBitmap;
+    }
+
+    private static Bitmap rotateBitmap_toBitmap(Bitmap origin, float alpha) {
+        if (origin == null) {
+            return null;
+        }
+        int width = origin.getWidth();
+        int height = origin.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.setRotate(alpha);
+        // 围绕原地进行旋转
+        Bitmap newBM = Bitmap.createBitmap(origin, 0, 0, width, height, matrix, false);
+        if (newBM.equals(origin)) {
+            return newBM;
+        }
+        origin.recycle();
+        return newBM;
+    }
 
     // 获取最优的预览图片大小
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -161,6 +229,21 @@ public class Utils {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // 根据相册的Uri获取图片的路径
+    public static String getPathFromURI(Context context, Uri uri) {
+        String result;
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        if (cursor == null) {
+            result = uri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
     }
 
     /**

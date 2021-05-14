@@ -3,7 +3,7 @@ plugins {
 }
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.example.ailab"
@@ -51,5 +51,16 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite:2.4.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+
+    // CameraX core library using the camera2 implementation
+    implementation "androidx.camera:camera-camera2:1.0.0-beta11"
+    // If you want to use the CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha18"
+    // If you want to use the CameraX Extensions library
+    implementation "androidx.camera:camera-extensions:1.0.0-alpha18"
+    // If you want to use the CameraX Lifecycle library
+    implementation "androidx.camera:camera-lifecycle:1.0.0-beta11"
+
+    implementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }

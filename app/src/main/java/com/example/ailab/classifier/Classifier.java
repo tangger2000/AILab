@@ -1,5 +1,5 @@
 
-package com.example.ailab;
+package com.example.ailab.classifier;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -65,7 +65,7 @@ public abstract class Classifier {
 
     /** Classifies a frame from the preview stream.
      * @return builder*/
-    SpannableStringBuilder classifyFrame(ByteBuffer imageInput) {
+    public SpannableStringBuilder classifyFrame(ByteBuffer imageInput) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
         if (tflite == null) {

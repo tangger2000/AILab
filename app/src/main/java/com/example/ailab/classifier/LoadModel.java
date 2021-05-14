@@ -1,4 +1,4 @@
-package com.example.ailab;
+package com.example.ailab.classifier;
 
 import java.util.List;
 import android.app.Activity;

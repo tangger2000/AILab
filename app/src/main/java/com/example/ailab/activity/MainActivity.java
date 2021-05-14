@@ -1,10 +1,12 @@
-package com.example.ailab;
+package com.example.ailab.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ailab.R;
 
 public class MainActivity extends AppCompatActivity{
     @Override
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
                 super.run();
                 try {
                     Thread.sleep(1000);
-                    Intent intent = new Intent(MainActivity.this,CameraActivity.class);
+                    Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                     startActivity(intent);
                     finish();
                 } catch (InterruptedException e) {

@@ -8,19 +8,18 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.SpannableStringBuilder;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.webkit.MimeTypeMap;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +33,6 @@ import androidx.camera.core.CameraInfoUnavailableException;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageCapture;
-import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
@@ -50,7 +48,6 @@ import com.example.ailab.utils.preProcessUtils;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -94,10 +91,10 @@ public class CameraActivity extends AppCompatActivity {
 
     /** 控件*/
     private PreviewView mPreviewView;
-    private ImageButton mRecordView, mBtnSelectImg;
-    private ImageButton mBtnCameraSwitch;
+    private ImageButton mRecordView, mBtnSelectImg, mBtnCameraSwitch, mBtnLight;
+    boolean lightOff = true;
     private Preview mPreview;
-    protected TextView textView;
+    protected TextView leftTextView, rightTextView;
     /**线程*/
     private ExecutorService mExecutorService;
     private Handler handler;
@@ -186,12 +183,15 @@ public class CameraActivity extends AppCompatActivity {
         mPreviewView = findViewById(R.id.view_finder);
         mRecordView = findViewById(R.id.take_photo);
         mBtnCameraSwitch = findViewById(R.id.camera_switch_button);
-        textView = findViewById(R.id.result_text);
+        leftTextView = findViewById(R.id.result_key_text);
+        rightTextView = findViewById(R.id.result_value_text);
         mBtnSelectImg = findViewById(R.id.select_img);
+        mBtnLight = findViewById(R.id.turn_on_torch);
 
         updateCameraUi();
         setRecordListener();
         setSelectListener();
+        setLightListener();
         mBtnCameraSwitch.setOnClickListener(v -> {
             if (CameraSelector.LENS_FACING_FRONT == mLensFacing){
                 mLensFacing = CameraSelector.LENS_FACING_BACK;
@@ -252,6 +252,20 @@ public class CameraActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
             startActivityForResult(intent, 1);
+        });
+    }
+
+    private void setLightListener(){
+        mBtnLight.setOnClickListener(v -> {
+            if ( mCamera.getCameraInfo().hasFlashUnit()) {
+                if(lightOff) {
+                    mCamera.getCameraControl().enableTorch(true);
+                    lightOff = false;
+                }else {
+                    mCamera.getCameraControl().enableTorch(false);
+                    lightOff = true;
+                }
+            }
         });
     }
 
@@ -433,11 +447,14 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void run() {
                 ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
-                SpannableStringBuilder builder = classifier.classifyFrame(imageInput);
+                SpannableStringBuilder leftBuilder = new SpannableStringBuilder();
+                SpannableStringBuilder rightBuilder = new SpannableStringBuilder();
+                classifier.classifyFrame(imageInput, leftBuilder, rightBuilder);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        textView.setText(builder);
+                        leftTextView.setText(leftBuilder);
+                        rightTextView.setText(rightBuilder);
                     }
                 });
             }

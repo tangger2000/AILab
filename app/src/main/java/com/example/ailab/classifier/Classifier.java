@@ -1,17 +1,16 @@
-
 package com.example.ailab.classifier;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.SystemClock;
+import android.text.Layout;
+import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Locale;
@@ -65,12 +64,10 @@ public abstract class Classifier {
 
     /** Classifies a frame from the preview stream.
      * @return builder*/
-    public SpannableStringBuilder classifyFrame(ByteBuffer imageInput) {
-        SpannableStringBuilder builder = new SpannableStringBuilder();
-
+    public void classifyFrame(ByteBuffer imageInput, SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder) {
+        // 你真的不好奇为啥这儿有两个builder么？害～key和value啊！
         if (tflite == null) {
             Log.e(TAG, "Image classifier has not been initialized; Skipped.");
-            builder.append(new SpannableString("Uninitialized Classifier."));
         }
 
         // Here's where the magic happens!!!
@@ -81,17 +78,19 @@ public abstract class Classifier {
 
 //        // Smooth the results across frames.
 //        applyFilter();
-        printTopKLabels(builder);
+        printTopKLabels(leftBuilder, rightBuilder);
         // Print the results.
         long duration = endTime - startTime;
-        SpannableString span = new SpannableString(duration + " ms");
-        span.setSpan(new ForegroundColorSpan(android.graphics.Color.LTGRAY), 0, span.length(), 0);
-        builder.append(span);
-        return builder;
+        SpannableString leftSpan = new SpannableString("Inference Time");
+        SpannableString rightSpan = new SpannableString(duration + "ms");
+        leftSpan.setSpan(new ForegroundColorSpan(android.graphics.Color.LTGRAY), 0, leftSpan.length(), 0);
+        rightSpan.setSpan(new ForegroundColorSpan(android.graphics.Color.LTGRAY), 0, rightSpan.length(), 0);
+        leftBuilder.append(leftSpan);
+        rightBuilder.append(rightSpan);
     }
 
     /** Prints top-K labels, to be shown in UI as the results. */
-    private void printTopKLabels(SpannableStringBuilder builder) {
+    private void printTopKLabels(SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder) {
         List<Map.Entry<String, Float>>list = getTopKLabels(true);
         for(Map.Entry<String,Float> mapping:list){
             sortedLabels.add(mapping);
@@ -104,8 +103,10 @@ public abstract class Classifier {
         for (int i = 0; i < size; i++) {
             Map.Entry<String, Float> label = sortedLabels.poll();
             assert label != null;
-            SpannableString span =
-                    new SpannableString(String.format(Locale.CHINA,"%s:  %4.3f\n", label.getKey(), label.getValue()));
+            SpannableString leftSpan =
+                    new SpannableString(String.format(Locale.CHINA,"%s\n", label.getKey()));
+            SpannableString rightSpan =
+                    new SpannableString(String.format(Locale.CHINA,"%4.3f\n", label.getValue()));
             int color;
             // Make it black when probability larger than threshold.
             if (label.getValue() > GOOD_PROB_THRESHOLD) {
@@ -115,11 +116,14 @@ public abstract class Classifier {
             }
             // Make first item bigger.
             if (i == size - 1) {
-                float sizeScale = (i == size - 1) ? 1.75f : 0.8f;
-                span.setSpan(new RelativeSizeSpan(sizeScale), 0, span.length(), 0);
+                float sizeScale = (i == size - 1) ? 1.2f : 0.8f;
+                leftSpan.setSpan(new RelativeSizeSpan(sizeScale), 0, leftSpan.length(), 0);
+                rightSpan.setSpan(new RelativeSizeSpan(sizeScale), 0, rightSpan.length(), 0);
             }
-            span.setSpan(new ForegroundColorSpan(color), 0, span.length(), 0);
-            builder.insert(0, span);
+            leftSpan.setSpan(new ForegroundColorSpan(color), 0, leftSpan.length(), 0);
+            rightSpan.setSpan(new ForegroundColorSpan(color), 0, rightSpan.length(), 0);
+            leftBuilder.insert(0, leftSpan);
+            rightBuilder.insert(0, rightSpan);
         }
     }
 

@@ -15,18 +15,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
 
 import com.example.ailab.deprecated.CameraActivity;
 import com.example.ailab.R;
-import com.example.ailab.utils.Utils;
 import com.example.ailab.classifier.GeneralClassifier;
-import com.example.ailab.classifier.LoadModel;
 import com.example.ailab.utils.preProcessUtils;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -41,7 +36,7 @@ public class ImageActivity extends AppCompatActivity {
     private final float stddev = 255;
 
     private ImageView imageView;
-    private TextView textView;
+    private TextView leftTextView, rightTextView;
     private View bottomSheet;
     private BottomSheetBehavior behavior;
 
@@ -88,7 +83,8 @@ public class ImageActivity extends AppCompatActivity {
 
         //获取控件，指定操作
         imageView = findViewById(R.id.image_view);
-        textView = findViewById(R.id.result_text);
+        leftTextView = findViewById(R.id.result_key_text);
+        rightTextView = findViewById(R.id.result_value_text);
         bottomSheet = findViewById(R.id.bottom_sheet_layout);
         behavior = BottomSheetBehavior.from(bottomSheet);
         ImageView bottom_sheet_arrow = findViewById(R.id.bottom_sheet_arrow);
@@ -98,8 +94,11 @@ public class ImageActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
 
             ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
-            SpannableStringBuilder builder = classifier.classifyFrame(imageInput);
-            textView.setText(builder);
+            SpannableStringBuilder leftBuilder = new SpannableStringBuilder();
+            SpannableStringBuilder rightBuilder = new SpannableStringBuilder();
+            classifier.classifyFrame(imageInput, leftBuilder, rightBuilder);
+            leftTextView.setText(leftBuilder);
+            rightTextView.setText(rightBuilder);
         } catch (Exception e) {
             e.printStackTrace();
         }

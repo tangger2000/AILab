@@ -198,7 +198,9 @@ public class CameraActivity extends AppCompatActivity {
         Bitmap bitmap = mTextureView.getBitmap();
         try {
             ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
-            SpannableStringBuilder builder = classifier.classifyFrame(imageInput);
+            SpannableStringBuilder leftBuilder = new SpannableStringBuilder();
+            SpannableStringBuilder rightBuilder = new SpannableStringBuilder();
+            classifier.classifyFrame(imageInput, leftBuilder, rightBuilder);
 //            textView.setText(builder);
         } catch (Exception e) {
             e.printStackTrace();

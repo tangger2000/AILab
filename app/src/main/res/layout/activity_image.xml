@@ -26,9 +26,12 @@
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4DFFFFFF"
+            android:background="#00000000"
             android:minHeight="?attr/actionBarSize"
-            app:navigationIcon="@drawable/abc_vector_test" />
+            app:navigationIcon="@drawable/outline_arrow_back_white_36"
+            app:subtitleTextColor="#00000000"
+            app:title=" "
+            app:titleTextColor="#00000000" />
 
     </RelativeLayout>
 

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
 
 import com.example.ailab.deprecated.CameraActivity;
 import com.example.ailab.R;
@@ -21,6 +23,7 @@ import com.example.ailab.utils.Utils;
 import com.example.ailab.classifier.GeneralClassifier;
 import com.example.ailab.classifier.LoadModel;
 import com.example.ailab.utils.preProcessUtils;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -39,6 +42,8 @@ public class ImageActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private TextView textView;
+    private View bottomSheet;
+    private BottomSheetBehavior behavior;
 
     private GeneralClassifier classifier;
     /** model file and label file*/
@@ -84,6 +89,9 @@ public class ImageActivity extends AppCompatActivity {
         //获取控件，指定操作
         imageView = findViewById(R.id.image_view);
         textView = findViewById(R.id.result_text);
+        bottomSheet = findViewById(R.id.bottom_sheet_layout);
+        behavior = BottomSheetBehavior.from(bottomSheet);
+        ImageView bottom_sheet_arrow = findViewById(R.id.bottom_sheet_arrow);
 
         try {
             //显示图像

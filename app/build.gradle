@@ -63,4 +63,7 @@ dependencies {
 
     implementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // bottom-sheet
+    implementation 'com.google.android.material:material:1.0.0'
+
 }

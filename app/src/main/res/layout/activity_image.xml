@@ -6,39 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ImageActivity"
-    android:background="#00000000">
-
+    android:background="@android:color/black">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00000000"
+        android:background="@android:color/black"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="480dp"
+            android:layout_height="640dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#4DFFFFFF"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="480dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar2"
-            android:background="@android:color/white"
-            android:scaleType="fitCenter"/>
-
-
-        <TextView
-            android:id="@+id/result_text"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
-            android:text="识别结果"
-            android:textSize="16sp" />
+            app:navigationIcon="@drawable/abc_vector_test" />
 
     </RelativeLayout>
+
+    <include
+        android:id="@+id/bottom_sheet_layout"
+        layout="@layout/layout_bottom_sheet" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

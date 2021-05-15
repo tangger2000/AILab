@@ -27,7 +27,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="0dp"
             android:background="#00FFFFFF"
-            android:text="识别结果"
             android:textSize="16sp" />
 
 

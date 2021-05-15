@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -48,7 +49,10 @@ import com.example.ailab.classifier.LoadModel;
 import com.example.ailab.utils.preProcessUtils;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -78,6 +82,11 @@ public class CameraActivity extends AppCompatActivity {
     /** file path*/
     private static final String modelPath = "mobilenet_v3.tflite";
     private static final String labelPath = "labels_list.txt";
+    /** bitmap params*/
+    //将图片的宽按比例缩放ratio = scalePixel / width
+    private final int scalePixel = 485;
+    private final int cropHeight = 640;
+    private final int cropWeight = 480;
 
     private final ArrayList<String> deniedPermission = new ArrayList<>();
     private final String TAG = this.getClass().getSimpleName();
@@ -219,45 +228,21 @@ public class CameraActivity extends AppCompatActivity {
         mRecordView.setOnClickListener(v -> {
             //拍照
             takingPicture = true;
-            //创建图片保存的文件地址
-            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath(),
-                    System.currentTimeMillis() + ".jpeg");
-            ImageCapture.Metadata metadata = new ImageCapture.Metadata();
-            metadata.setReversedHorizontal(mLensFacing == CameraSelector.LENS_FACING_FRONT);
+            Bitmap bitmap = mPreviewView.getBitmap();
+            try {
+                bitmap = preprocess(bitmap, scalePixel, cropHeight, cropWeight);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
-            ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture
-                    .OutputFileOptions.Builder(file)
-                    .setMetadata(metadata)
-                    .build();
-            mImageCapture.takePicture(outputFileOptions,mExecutorService , new ImageCapture.OnImageSavedCallback() {
-                @Override
-                public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                    Uri savedUri = outputFileResults.getSavedUri();
-                    if(savedUri == null){
-                        savedUri = Uri.fromFile(file);
-                    }
-                    outputFilePath = file.getAbsolutePath();
-                    onFileSaved(savedUri);
-                }
-
-                @Override
-                public void onError(@NonNull ImageCaptureException exception) {
-                    Log.e(TAG, "Photo capture failed: "+exception.getMessage(), exception);
-                }
-            });
+            Intent intent = new Intent(CameraActivity.this, ImageActivity.class);
+            ByteArrayOutputStream bs = new ByteArrayOutputStream();
+            assert bitmap != null;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bs);
+            byte[] bitmapByte = bs.toByteArray();
+            intent.putExtra("bitmap", bitmapByte);
+            startActivity(intent);
         });
-    }
-
-    private void onFileSaved(Uri savedUri) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            sendBroadcast(new Intent(android.hardware.Camera.ACTION_NEW_PICTURE, savedUri));
-        }
-        String mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap
-                .getFileExtensionFromUrl(savedUri.getPath()));
-        MediaScannerConnection.scanFile(getApplicationContext(),
-                new String[]{new File(savedUri.getPath()).getAbsolutePath()},
-                new String[]{mimeTypeFromExtension}, (path, uri) -> Log.d(TAG, "Image capture scanned into media store: $uri"+uri));
-//        PreviewActivity.start(this, outputFilePath, !takingPicture);
     }
 
     private void setSelectListener(){
@@ -275,6 +260,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String imagePath;
+        Bitmap bitmap = null;
         if(requestCode == 1) {
             if (data == null) {
                 Log.w("onActivityResult", "user photo data is null");
@@ -282,23 +268,40 @@ public class CameraActivity extends AppCompatActivity {
             }
             Uri imageUri = data.getData();
             imagePath = Utils.getPathFromURI(CameraActivity.this, imageUri);
+            try {
+                FileInputStream fis = new FileInputStream(imagePath);
+                bitmap = BitmapFactory.decodeStream(fis);
+                bitmap = preprocess(bitmap, scalePixel, cropHeight, cropWeight);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
             // 跳转到处理页面，同时利用intent传递图像的文件路径
             Intent intent = new Intent(CameraActivity.this, ImageActivity.class);
-            //传递参数
-            intent.putExtra("imagePath", imagePath);
-//            intent.putExtra("modelPath", modelPath);
-//            intent.putExtra("labelPath", labelPath);
-//            intent.putExtra("targetH", targetHeight);
-//            intent.putExtra("targetW", targetWidth);
-//            intent.putExtra("mean", mean);
-//            intent.putExtra("stddev", stddev);
+            ByteArrayOutputStream bs = new ByteArrayOutputStream();
+            assert bitmap != null;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bs);
+            byte[] bitmapByte = bs.toByteArray();
+            intent.putExtra("bitmap", bitmapByte);
             startActivity(intent);
         }
     }
 
+    private Bitmap preprocess(Bitmap bitmap, int scalePixel, int cropH, int cropW) throws FileNotFoundException {
+        //图像预处理（不同于tflite模型的预处理，这里的预处理是缩放、裁剪、旋转意义上的）
+        //旋转图像，当图像是横向时旋转成竖向
+        bitmap = Utils.tryRotateBitmap(bitmap);
+        //按比例缩放图片，将位图按比例缩放
+        bitmap = Utils.scaleBitmap(bitmap, scalePixel);
+        //再将图片中心裁剪
+        assert bitmap != null;
+        bitmap = Utils.cropBitmap(bitmap, cropH, cropW);
+        return bitmap;
+    }
+
 
     private void updateCameraUi() {
-        //必须先remove在add这样视频流画面才能正确的显示出来
+        //必须先remove再add这样视频流画面才能正确的显示出来
         ViewGroup parent = (ViewGroup) mPreviewView.getParent();
         parent.removeView(mPreviewView);
         parent.addView(mPreviewView,0);

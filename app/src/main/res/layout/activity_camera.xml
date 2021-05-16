@@ -17,11 +17,12 @@
         <androidx.camera.view.PreviewView
             android:id="@+id/view_finder"
             android:layout_width="match_parent"
-            android:layout_height="640dp" />
+            android:layout_height="640dp" >
+        </androidx.camera.view.PreviewView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -57,7 +58,16 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:orientation="vertical">
+
+        <include
+            android:id="@+id/horizontal_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/button_father"
+            layout="@layout/layout_horizontal_nav" />
+
         <LinearLayout
+            android:id="@+id/button_father"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_alignParentEnd="true"

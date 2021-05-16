@@ -15,14 +15,13 @@
             android:gravity="center_horizontal"
             android:fillViewport="true"
             android:layout_marginTop="10dp"
-            android:background="#80000000" >
+            android:background="#B3000000" >
         </com.example.ailab.activity.HorizontalScrollTabStrip>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:background="#80000000">
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/id_line"

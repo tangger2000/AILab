@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:textSize="16sp" />
             <TextView
                 android:id="@+id/result_value_text"
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="end"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -65,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="Frame"
                 android:textColor="@android:color/black" />
             <TextView
@@ -72,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="end"
                 android:text="640*480"
                 android:textColor="@android:color/black"/>
@@ -87,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="Crop"
                 android:textColor="@android:color/black" />
 
@@ -95,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="end"
                 android:text="640*480"
                 android:textColor="@android:color/black"/>
@@ -110,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="Rotation"
                 android:textColor="@android:color/black" />
 
@@ -118,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="end"
                 android:text="90"
                 android:textColor="@android:color/black"/>

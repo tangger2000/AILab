@@ -2,7 +2,6 @@ package com.example.ailab.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,11 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +51,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -66,23 +60,12 @@ import java.util.concurrent.Executors;
  * author：tangger
  * date：2021/5/13
  */
-public class CameraActivity extends AppCompatActivity implements HorizontalScrollTabStrip.TagChangeListener{
+public class CameraActivity extends AppCompatActivity{
     /** 常量参数*/
     private static final String[] PERMISSIONS = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private static final int  PERMISSIONS_REQUEST_CODE = 10;
     private static final double RATIO_4_3_VALUE = 4.0 / 3.0;
     private static final double  RATIO_16_9_VALUE = 16.0 / 9.0;
-    private final List<String> mTitiles = Arrays.asList("扫码","花卉","通用", "鸟类", "食物");
-    private HorizontalScrollTabStrip id_horizontal_view;
-    private View id_line;
-    /**
-     * 指示器下的红线的参数
-     */
-    private LinearLayout.LayoutParams lineLp;
-    /**
-     * 红线当前的位置
-     */
-    private int mLineLocation_X = 0;
 
     /** Model Params
      *  Define the Size of Image
@@ -103,11 +86,10 @@ public class CameraActivity extends AppCompatActivity implements HorizontalScrol
 
     private final ArrayList<String> deniedPermission = new ArrayList<>();
     private final String TAG = this.getClass().getSimpleName();
-    private String outputFilePath;
 
     /** 控件*/
     private PreviewView mPreviewView;
-    private ImageButton mRecordView, mBtnSelectImg, mBtnCameraSwitch, mBtnLight;
+    private ImageButton mRecordView, mBtnSelectImg, mBtnCameraSwitch, mBtnLight, mBtnExit;
     boolean lightOff = true;
     private Preview mPreview;
     protected TextView leftTextView, rightTextView;
@@ -203,17 +185,13 @@ public class CameraActivity extends AppCompatActivity implements HorizontalScrol
         rightTextView = findViewById(R.id.result_value_text);
         mBtnSelectImg = findViewById(R.id.select_img);
         mBtnLight = findViewById(R.id.turn_on_torch);
-        id_horizontal_view = (HorizontalScrollTabStrip) findViewById(R.id.id_horizontal_view);
-        initLineParams();
-        id_line = findViewById(R.id.id_line);
-        id_line.setLayoutParams(lineLp);
-        id_horizontal_view.setTags(mTitiles);
-        id_horizontal_view.setOnTagChangeListener(this);
+        mBtnExit = findViewById(R.id.shut_off);
 
         updateCameraUi();
         setRecordListener();
         setSelectListener();
         setLightListener();
+        setExitListener();
         mBtnCameraSwitch.setOnClickListener(v -> {
             if (CameraSelector.LENS_FACING_FRONT == mLensFacing){
                 mLensFacing = CameraSelector.LENS_FACING_BACK;
@@ -222,23 +200,6 @@ public class CameraActivity extends AppCompatActivity implements HorizontalScrol
             }
             bindCameraUseCases();
         });
-    }
-
-    @Override
-    public void changeLine(int location_x, boolean isClick) {
-        TranslateAnimation animation = new TranslateAnimation(mLineLocation_X,
-                location_x, 0f, 0f);
-        animation.setInterpolator(new LinearInterpolator());
-        int duration = 0;
-        if (isClick) {
-            duration = 200 * (Math.abs(location_x - mLineLocation_X) / 100);
-            duration = duration > 400 ? 400 : duration;
-        } else
-            duration = 0;
-        animation.setDuration(duration);
-        animation.setFillAfter(true);
-        id_line.startAnimation(animation);
-        mLineLocation_X = location_x;
     }
 
     @Override
@@ -308,6 +269,26 @@ public class CameraActivity extends AppCompatActivity implements HorizontalScrol
         });
     }
 
+    private void setExitListener(){
+        mBtnExit.setOnClickListener(view -> {
+            AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this)
+                    .setTitle("退出程序")
+                    .setMessage("是否退出程序")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    }).create();
+            alertDialog.show();
+        });
+    }
+
     //响应选择图片控件
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -338,21 +319,6 @@ public class CameraActivity extends AppCompatActivity implements HorizontalScrol
             intent.putExtra("bitmap", bitmapByte);
             startActivity(intent);
         }
-    }
-
-    /**
-     * 初始化指示器“红线”参数
-     */
-    private void initLineParams() {
-        lineLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        lineLp.weight = 0f;
-        WindowManager wm = (WindowManager) getSystemService(Service.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();
-        wm.getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-        lineLp.width = (int) (width / (id_horizontal_view.mDefaultShowTagCount + 0.7));
-        lineLp.height = (int) (getResources().getDisplayMetrics().density * 1 + 0.5f);
     }
 
     private Bitmap preprocess(Bitmap bitmap, int scalePixel, int cropH, int cropW) throws FileNotFoundException {

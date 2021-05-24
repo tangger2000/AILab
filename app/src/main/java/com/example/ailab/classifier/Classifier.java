@@ -106,7 +106,7 @@ public abstract class Classifier {
             SpannableString leftSpan =
                     new SpannableString(String.format(Locale.CHINA,"%s\n", label.getKey()));
             SpannableString rightSpan =
-                    new SpannableString(String.format(Locale.CHINA,"%4.3f\n", label.getValue()));
+                    new SpannableString(String.format(Locale.CHINA,"%5.2f%%\n", label.getValue()*100));
             int color;
             // Make it black when probability larger than threshold.
             if (label.getValue() > GOOD_PROB_THRESHOLD) {

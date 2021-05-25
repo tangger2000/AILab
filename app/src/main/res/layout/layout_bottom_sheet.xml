@@ -137,5 +137,21 @@
             android:layout_marginTop="10dp"
             android:background="@android:color/darker_gray" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:text="Powered by - Tensorflow Lite\n more - https://ytlee.cn"
+                android:textColor="@android:color/black"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
 </LinearLayout>

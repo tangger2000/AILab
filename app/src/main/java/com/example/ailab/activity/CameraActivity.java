@@ -44,8 +44,6 @@ import com.example.ailab.classifier.LoadModel;
 import com.example.ailab.utils.preProcessUtils;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

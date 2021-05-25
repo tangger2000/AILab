@@ -19,7 +19,7 @@
 <!--        <activity android:name=".deprecated.CameraActivity" />-->
 
         <activity android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|keyboardHidden|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

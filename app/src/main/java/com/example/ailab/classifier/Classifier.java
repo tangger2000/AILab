@@ -49,12 +49,13 @@ public abstract class Classifier {
 
         Interpreter.Options options = (new Interpreter.Options());
         options.setNumThreads(NUM_THREADS);
-        NnApiDelegate nnApiDelegate;
-        // Initialize interpreter with NNAPI delegate for Android Pie or above
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            nnApiDelegate = new NnApiDelegate();
-            options.addDelegate(nnApiDelegate);
-        }
+        options.setUseXNNPACK(true);
+//        NnApiDelegate nnApiDelegate;
+//        // Initialize interpreter with NNAPI delegate for Android Pie or above
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//            nnApiDelegate = new NnApiDelegate();
+//            options.addDelegate(nnApiDelegate);
+//        }
 
         /* init TFLite interpreter*/
         tflite = new Interpreter(modelFile, options);
@@ -64,7 +65,7 @@ public abstract class Classifier {
 
     /** Classifies a frame from the preview stream.
      * @return builder*/
-    public void classifyFrame(ByteBuffer imageInput, SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder) {
+    public void classifyFrame(ByteBuffer imageInput, SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder, boolean softmax) {
         // 你真的不好奇为啥这儿有两个builder么？害～key和value啊！
         if (tflite == null) {
             Log.e(TAG, "Image classifier has not been initialized; Skipped.");
@@ -78,7 +79,7 @@ public abstract class Classifier {
 
 //        // Smooth the results across frames.
 //        applyFilter();
-        printTopKLabels(leftBuilder, rightBuilder);
+        printTopKLabels(leftBuilder, rightBuilder, softmax);
         // Print the results.
         long duration = endTime - startTime;
         SpannableString leftSpan = new SpannableString("Inference Time");
@@ -90,8 +91,8 @@ public abstract class Classifier {
     }
 
     /** Prints top-K labels, to be shown in UI as the results. */
-    private void printTopKLabels(SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder) {
-        List<Map.Entry<String, Float>>list = getTopKLabels(true);
+    private void printTopKLabels(SpannableStringBuilder leftBuilder, SpannableStringBuilder rightBuilder, boolean softmax) {
+        List<Map.Entry<String, Float>>list = getTopKLabels(softmax);
         for(Map.Entry<String,Float> mapping:list){
             sortedLabels.add(mapping);
             if (sortedLabels.size() > RESULTS_TO_SHOW) {

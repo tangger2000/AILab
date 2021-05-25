@@ -32,8 +32,8 @@ public class ImageActivity extends AppCompatActivity {
     private final int targetWidth = 224;
 
     /**Define normalizeOp params*/
-    private final float mean = 0;
-    private final float stddev = 255;
+    private final float mean = 0.0f;
+    private final float stddev = 1.0f;
 
     private ImageView imageView;
     private TextView leftTextView, rightTextView;
@@ -93,10 +93,10 @@ public class ImageActivity extends AppCompatActivity {
             //显示图像
             imageView.setImageBitmap(bitmap);
 
-            ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
+            ByteBuffer imageInput = imageData.getUint8ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
             SpannableStringBuilder leftBuilder = new SpannableStringBuilder();
             SpannableStringBuilder rightBuilder = new SpannableStringBuilder();
-            classifier.classifyFrame(imageInput, leftBuilder, rightBuilder);
+            classifier.classifyFrame(imageInput, leftBuilder, rightBuilder, false);
             leftTextView.setText(leftBuilder);
             rightTextView.setText(rightBuilder);
         } catch (Exception e) {

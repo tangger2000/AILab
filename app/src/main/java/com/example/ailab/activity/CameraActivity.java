@@ -15,7 +15,6 @@ import android.os.HandlerThread;
 import android.text.SpannableStringBuilder;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -45,6 +44,8 @@ import com.example.ailab.classifier.LoadModel;
 import com.example.ailab.utils.preProcessUtils;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -73,11 +74,11 @@ public class CameraActivity extends AppCompatActivity{
     private static final int targetHeight = 224;
     private static final int targetWidth = 224;
     /**Define normalizeOp params*/
-    private static final float mean = 0;
-    private static final float stddev = 255;
+    private static final float mean = 0.0f;
+    private static final float stddev = 1.0f;
     /** file path*/
-    private static final String modelPath = "mobilenet_v3.tflite";
-    private static final String labelPath = "labels_list.txt";
+    private static final String modelPath = "efficientnet_lite0_int8_2.tflite";
+    private static final String labelPath = "labels.txt";
     /** bitmap params*/
     //将图片的宽按比例缩放ratio = scalePixel / width
     private final int scalePixel = 485;
@@ -218,10 +219,6 @@ public class CameraActivity extends AppCompatActivity{
     @Override
     protected void onStop() {
         super.onStop();
-//
-//        if(!mExecutorService.isShutdown()){
-//            mExecutorService.shutdown();
-//        }
     }
 
     private void setRecordListener() {
@@ -416,8 +413,9 @@ public class CameraActivity extends AppCompatActivity{
                 // insert your code here.
                 Log.d("分析","start");
                 Bitmap bitmap = Utils.toBitmap(image);
-                predict(bitmap);
                 image.close();
+                predict(bitmap);
+                Runtime.getRuntime().gc();
             }
         });
 
@@ -466,10 +464,12 @@ public class CameraActivity extends AppCompatActivity{
         runInBackground(new Runnable() {
             @Override
             public void run() {
-                ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
+//                ByteBuffer imageInput = imageData.getFloat32ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
+                ByteBuffer imageInput = imageData.getUint8ImageWithNormOp(bitmap, targetHeight, targetWidth, mean, stddev).getBuffer();
                 SpannableStringBuilder leftBuilder = new SpannableStringBuilder();
                 SpannableStringBuilder rightBuilder = new SpannableStringBuilder();
-                classifier.classifyFrame(imageInput, leftBuilder, rightBuilder);
+                classifier.classifyFrame(imageInput, leftBuilder, rightBuilder, false);
+                Runtime.getRuntime().gc();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

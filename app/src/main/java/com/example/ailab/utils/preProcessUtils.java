@@ -1,12 +1,12 @@
 package com.example.ailab.utils;
 
 import android.graphics.Bitmap;
-
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.common.ops.NormalizeOp;
 import org.tensorflow.lite.support.image.ImageProcessor;
 import org.tensorflow.lite.support.image.TensorImage;
 import org.tensorflow.lite.support.image.ops.ResizeOp;
+import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
 
 /***
  * @className: preProcessUtils
@@ -27,6 +27,7 @@ public class preProcessUtils {
         // Create an ImageProcessor with all ops required.
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
+                        .add(new ResizeWithCropOrPadOp(640, 480))
                         .add(new ResizeOp(targetHeight, targetWidth, ResizeOp.ResizeMethod.BILINEAR))
                         .add(new NormalizeOp(mean, stddev))
                         .build();
@@ -51,6 +52,7 @@ public class preProcessUtils {
         // Create an ImageProcessor with all ops required.
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
+                        .add(new ResizeWithCropOrPadOp(640, 480))
                         .add(new ResizeOp(targetHeight, targetWidth, ResizeOp.ResizeMethod.BILINEAR))
                         .add(new NormalizeOp(mean, stddev))
                         .build();
@@ -74,6 +76,7 @@ public class preProcessUtils {
         // Create an ImageProcessor with all ops required.
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
+                        .add(new ResizeWithCropOrPadOp(640, 480))
                         .add(new ResizeOp(targetHeight, targetWidth, ResizeOp.ResizeMethod.BILINEAR))
                         .build();
 
@@ -96,6 +99,7 @@ public class preProcessUtils {
         // Create an ImageProcessor with all ops required.
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
+                        .add(new ResizeWithCropOrPadOp(640, 480))
                         .add(new ResizeOp(targetHeight, targetWidth, ResizeOp.ResizeMethod.BILINEAR))
                         .build();
 

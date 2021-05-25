@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.common.TensorProcessor;
+import org.tensorflow.lite.support.common.ops.NormalizeOp;
 import org.tensorflow.lite.support.label.TensorLabel;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
@@ -38,7 +39,7 @@ public class GeneralClassifier extends Classifier{
         super(modelFile, labelFile);
         // Create a container for the result and specify that this is a quantized model.
         // Hence, the 'DataType' is defined as UINT8 (8-bit unsigned integer)
-        probabilityBuffer = TensorBuffer.createFixedSize(new int[]{1, getNumLabels()}, DataType.FLOAT32);
+        probabilityBuffer = TensorBuffer.createFixedSize(new int[]{1, getNumLabels()}, DataType.UINT8);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class GeneralClassifier extends Classifier{
         Map<String, Float> floatMap = null;
         // Post-processor which dequantize the result
         TensorProcessor probabilityProcessor =
-                new TensorProcessor.Builder().build();
+                new TensorProcessor.Builder().add(new NormalizeOp(0, 255)).build();
 
         if (softmax)
         {

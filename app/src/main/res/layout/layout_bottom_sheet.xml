@@ -68,7 +68,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Frame"
+                android:text="原图尺寸"
                 android:textColor="@android:color/black" />
             <TextView
                 android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Crop"
+                android:text="裁剪尺寸"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -117,7 +117,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Rotation"
+                android:text="旋转角度"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -138,19 +138,19 @@
             android:background="@android:color/darker_gray" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:text="Powered by - Tensorflow Lite\n more - https://ytlee.cn"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="78dp"-->
+<!--                android:text="Powered by - Tensorflow Lite\n more - https://ytlee.cn"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:gravity="center"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
     </LinearLayout>

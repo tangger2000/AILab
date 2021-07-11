@@ -1,1000 +1,1000 @@
-tench
-goldfish
-great white shark
-tiger shark
-hammerhead
-electric ray
-stingray
-cock
-hen
-ostrich
-brambling
-goldfinch
-house finch
-junco
-indigo bunting
-robin
-bulbul
-jay
-magpie
-chickadee
-water ouzel
-kite
-bald eagle
-vulture
-great grey owl
-European fire salamander
-common newt
-eft
-spotted salamander
-axolotl
-bullfrog
-tree frog
-tailed frog
-loggerhead
-leatherback turtle
-mud turtle
-terrapin
-box turtle
-banded gecko
-common iguana
-American chameleon
-whiptail
-agama
-frilled lizard
-alligator lizard
-Gila monster
-green lizard
-African chameleon
-Komodo dragon
-African crocodile
-American alligator
-triceratops
-thunder snake
-ringneck snake
-hognose snake
-green snake
-king snake
-garter snake
-water snake
-vine snake
-night snake
-boa constrictor
-rock python
-Indian cobra
-green mamba
-sea snake
-horned viper
-diamondback
-sidewinder
-trilobite
-harvestman
-scorpion
-black and gold garden spider
-barn spider
-garden spider
-black widow
-tarantula
-wolf spider
-tick
-centipede
-black grouse
-ptarmigan
-ruffed grouse
-prairie chicken
-peacock
-quail
-partridge
-African grey
-macaw
-sulphur-crested cockatoo
-lorikeet
-coucal
-bee eater
-hornbill
-hummingbird
-jacamar
-toucan
-drake
-red-breasted merganser
-goose
-black swan
-tusker
-echidna
-platypus
-wallaby
-koala
-wombat
-jellyfish
-sea anemone
-brain coral
-flatworm
-nematode
-conch
-snail
-slug
-sea slug
-chiton
-chambered nautilus
-Dungeness crab
-rock crab
-fiddler crab
-king crab
-American lobster
-spiny lobster
-crayfish
-hermit crab
-isopod
-white stork
-black stork
-spoonbill
-flamingo
-little blue heron
-American egret
-bittern
-crane
-limpkin
-European gallinule
-American coot
-bustard
-ruddy turnstone
-red-backed sandpiper
-redshank
-dowitcher
-oystercatcher
-pelican
-king penguin
-albatross
-grey whale
-killer whale
-dugong
-sea lion
-Chihuahua
-Japanese spaniel
-Maltese dog
-Pekinese
-Shih-Tzu
-Blenheim spaniel
-papillon
-toy terrier
-Rhodesian ridgeback
-Afghan hound
-basset
-beagle
-bloodhound
-bluetick
-black-and-tan coonhound
-Walker hound
-English foxhound
-redbone
-borzoi
-Irish wolfhound
-Italian greyhound
-whippet
-Ibizan hound
-Norwegian elkhound
-otterhound
-Saluki
-Scottish deerhound
-Weimaraner
-Staffordshire bullterrier
-American Staffordshire terrier
-Bedlington terrier
-Border terrier
-Kerry blue terrier
-Irish terrier
-Norfolk terrier
-Norwich terrier
-Yorkshire terrier
-wire-haired fox terrier
-Lakeland terrier
-Sealyham terrier
-Airedale
-cairn
-Australian terrier
-Dandie Dinmont
-Boston bull
-miniature schnauzer
-giant schnauzer
-standard schnauzer
-Scotch terrier
-Tibetan terrier
-silky terrier
-soft-coated wheaten terrier
-West Highland white terrier
-Lhasa
-flat-coated retriever
-curly-coated retriever
-golden retriever
-Labrador retriever
-Chesapeake Bay retriever
-German short-haired pointer
-vizsla
-English setter
-Irish setter
-Gordon setter
-Brittany spaniel
-clumber
-English springer
-Welsh springer spaniel
-cocker spaniel
-Sussex spaniel
-Irish water spaniel
-kuvasz
-schipperke
-groenendael
-malinois
-briard
-kelpie
-komondor
-Old English sheepdog
-Shetland sheepdog
-collie
-Border collie
-Bouvier des Flandres
-Rottweiler
-German shepherd
-Doberman
-miniature pinscher
-Greater Swiss Mountain dog
-Bernese mountain dog
-Appenzeller
-EntleBucher
-boxer
-bull mastiff
-Tibetan mastiff
-French bulldog
-Great Dane
-Saint Bernard
-Eskimo dog
-malamute
-Siberian husky
-dalmatian
-affenpinscher
-basenji
-pug
-Leonberg
-Newfoundland
-Great Pyrenees
-Samoyed
-Pomeranian
-chow
-keeshond
-Brabancon griffon
-Pembroke
+鲤鱼
+金鱼
+大白鲨
+虎鲨
+锤头
+电鳐
+黄貂鱼
+旋塞
+母鸡
+鸵鸟
+燕雀
+金翅雀
+家朱雀
+灯草鹀
+靛彩鹀
+罗宾
+夜莺
+冠蓝鸦
+喜鹊
+山雀
+河鸟
+鸢鸟
+秃鹰
+秃鹰
+猫头鹰
+火蜥蜴
+蝾螈
+蝾螈
+斑点蝾螈
+美西螈
+牛蛙
+树蛙
+尾蟾
+海龟
+棱皮龟
+泥龟
+水龟
+箱龟
+壁虎
+鬣蜥
+变色龙
+鞭尾
+蜥蜴
+伞蜥
+鳄蜥
+毒蜥
+蜥蜴
+变色龙
+科摩多龙
+暹罗鳄
+美洲鳄
+三角龙
+雷蛇
+环颈蛇
+猪鼻蛇
+青蛇
+王蛇
+花纹蛇
+水蛇
+藤蛇
+夜蛇
+蟒蛇
+岩蟒
+眼镜蛇
+绿曼巴
+海蛇
+角蝰
+菱形斑纹
+响尾蛇
+三叶虫
+盲蜘蛛
+蝎子
+蜘蛛
+蜘蛛
+蜘蛛
+黑寡妇
+狼蛛
+狼蛛
+蜱虫
+蜈蚣
+黑松鸡
+松鸡
+松鸡
+草原鸡
+孔雀
+鹌鹑
+鹧鸪
+灰鹦鹉
+金刚鹦鹉
+鹦鹉
+鹦鹉
+鸦鹃
+蜂虎
+犀鸟
+蜂鸟
+食虫鸟
+巨嘴鸟
+飞龙
+秋沙鸭
+鹅
+黑天鹅
+大象
+针鼹鼠
+鸭嘴兽
+小袋鼠
+考拉
+袋熊
+水母
+海葵
+脑珊瑚
+扁形虫
+线虫
+海螺
+蜗牛
+鼻涕虫
+海蛞蝓
+石鳖
+鹦鹉螺
+鹦鹉螺
+岩蟹
+招潮蟹
+帝王蟹
+美国龙虾
+大螯虾
+小龙虾
+寄居蟹
+穿山甲
+白鹳
+黑鹳
+篦鹭
+火烈鸟
+小蓝鹭
+白鹭
+麻鳽
+鹤
+秧鸡
+黑水鸡
+骨顶鸡
+大鸨
+红鸟
+红背鹬
+红脚鹬
+长嘴鹬
+蛎鹬
+鹈鹕
+企鹅
+信天翁
+灰鲸
+虎鲸
+儒艮
+海狮
+吉娃娃
+日本狆
+马耳他狗
+京巴犬
+西施犬
+布伦海姆狗
+蝴蝶狗
+玩具狗
+脊背犬
+阿富汗猎犬
+巴塞特猎犬
+猎犬
+侦探犬
+浣熊犬
+浣熊犬
+猎犬
+猎狐犬
+浣熊犬
+猎狼
+爱尔兰猎狼犬
+意大利灵缇犬
+小灵狗
+依比沙猎犬
+挪威猎鹿犬
+奥达猎犬
+萨卢基狗
+苏格兰猎鹿犬
+魏玛猎狗
+斗牛犬
+斗牛犬
+贝灵顿狗
+猎狐犬
+凯利蓝梗
+爱尔兰梗
+诺福克梗
+诺里奇梗犬
+约克郡犬
+刚毛猎狐梗
+湖畔梗
+西里汉梗
+万能㹴
+凯安梗
+澳洲梗
+丹迪丁蒙
+波士顿梗犬
+雪纳瑞犬
+雪纳瑞犬
+雪纳瑞犬
+苏格兰梗
+西藏梗
+丝毛狗
+爱尔兰软毛梗
+西部高地白梗
+拉萨梗
+平毛猎犬
+卷毛猎犬
+金毛猎犬
+拉布拉多猎犬
+切萨皮克海湾寻回犬
+德国短毛
+维希拉猎犬
+雪达蹲猎犬
+爱尔兰长毛猎犬
+哥顿塞特犬
+布列塔尼猎犬
+矮脚长耳猎犬
+英语施普林格
+威尔斯施普林格猎犬
+可卡犬
+苏塞克斯猎犬
+爱尔兰水猎犬
+白警犬
+舒柏奇犬
+比利时牧羊狗
+马利诺斯犬
+伯瑞犬
+马形水鬼
+牧羊犬
+英国古代牧羊犬
+喜乐蒂牧羊犬
+牧羊犬
+边境牧羊犬
+法兰德斯牧牛狗
+罗特韦尔犬
+德国牧羊犬
+杜宾犬
+迷你品
+大瑞士山犬
+伯尔尼兹山犬
+阿彭策尔
+牧牛犬
+拳师犬
+斗牛獒
+藏獒
+法国斗牛犬
+大丹犬
+圣伯纳德犬
+爱斯基摩犬
+雪橇犬
+西伯利亚雪橇犬
+达尔马提亚
+猴犬
+巴辛吉犬
+哈巴狗
+兰波格犬
+纽芬兰
+大白熊犬
+萨莫耶德人
+波美拉尼亚的
+松狮犬
+荷兰狗
+布鲁塞尔格里芬犬
+柯基犬
 Cardigan
-toy poodle
-miniature poodle
-standard poodle
-Mexican hairless
-timber wolf
-white wolf
-red wolf
-coyote
-dingo
-dhole
-African hunting dog
-hyena
-red fox
-kit fox
-Arctic fox
-grey fox
-tabby
-tiger cat
-Persian cat
-Siamese cat
-Egyptian cat
-cougar
-lynx
-leopard
-snow leopard
-jaguar
-lion
-tiger
-cheetah
-brown bear
-American black bear
-ice bear
-sloth bear
-mongoose
-meerkat
-tiger beetle
-ladybug
-ground beetle
-long-horned beetle
-leaf beetle
-dung beetle
-rhinoceros beetle
-weevil
-fly
-bee
-ant
-grasshopper
-cricket
-walking stick
-cockroach
-mantis
-cicada
-leafhopper
-lacewing
-dragonfly
-damselfly
-admiral
-ringlet
-monarch
-cabbage butterfly
-sulphur butterfly
-lycaenid
-starfish
-sea urchin
-sea cucumber
-wood rabbit
-hare
-Angora
-hamster
-porcupine
-fox squirrel
-marmot
-beaver
-guinea pig
-sorrel
-zebra
-hog
-wild boar
-warthog
-hippopotamus
-ox
-water buffalo
-bison
-ram
-bighorn
-ibex
-hartebeest
-impala
-gazelle
-Arabian camel
-llama
-weasel
-mink
-polecat
-black-footed ferret
-otter
-skunk
-badger
-armadillo
-three-toed sloth
-orangutan
-gorilla
-chimpanzee
-gibbon
-siamang
-guenon
-patas
-baboon
-macaque
-langur
-colobus
-proboscis monkey
-marmoset
-capuchin
-howler monkey
-titi
-spider monkey
-squirrel monkey
-Madagascar cat
-indri
-Indian elephant
-African elephant
-lesser panda
-giant panda
-barracouta
-eel
-coho
-rock beauty
-anemone fish
-sturgeon
-gar
-lionfish
-puffer
-abacus
-abaya
-academic gown
-accordion
-acoustic guitar
-aircraft carrier
-airliner
-airship
-altar
-ambulance
-amphibian
-analog clock
-apiary
-apron
-ashcan
-assault rifle
-backpack
-bakery
-balance beam
-balloon
-ballpoint
-Band Aid
-banjo
-bannister
-barbell
-barber chair
-barbershop
-barn
-barometer
-barrel
-barrow
-baseball
-basketball
-bassinet
-bassoon
-bathing cap
-bath towel
-bathtub
-beach wagon
-beacon
-beaker
-bearskin
-beer bottle
-beer glass
-bell cote
-bib
-bicycle-built-for-two
-bikini
-binder
-binoculars
-birdhouse
-boathouse
-bobsled
-bolo tie
-bonnet
-bookcase
-bookshop
-bottlecap
-bow
-bow tie
-brass
-brassiere
-breakwater
-breastplate
-broom
-bucket
-buckle
-bulletproof vest
-bullet train
-butcher shop
-cab
-caldron
-candle
-cannon
-canoe
-can opener
-cardigan
-car mirror
-carousel
-carpenter's kit
-carton
-car wheel
-cash machine
-cassette
-cassette player
-castle
-catamaran
-CD player
-cello
-cellular telephone
-chain
-chainlink fence
-chain mail
-chain saw
-chest
-chiffonier
-chime
-china cabinet
-Christmas stocking
-church
-cinema
-cleaver
-cliff dwelling
-cloak
-clog
-cocktail shaker
-coffee mug
-coffeepot
-coil
-combination lock
-computer keyboard
-confectionery
-container ship
-convertible
-corkscrew
-cornet
-cowboy boot
-cowboy hat
-cradle
-crane
-crash helmet
-crate
-crib
-Crock Pot
-croquet ball
-crutch
-cuirass
-dam
-desk
-desktop computer
-dial telephone
-diaper
-digital clock
-digital watch
-dining table
-dishrag
-dishwasher
-disk brake
-dock
-dogsled
-dome
-doormat
-drilling platform
-drum
-drumstick
-dumbbell
-Dutch oven
-electric fan
-electric guitar
-electric locomotive
-entertainment center
-envelope
-espresso maker
-face powder
-feather boa
-file
-fireboat
-fire engine
-fire screen
-flagpole
-flute
-folding chair
-football helmet
-forklift
-fountain
-fountain pen
-four-poster
-freight car
-French horn
-frying pan
-fur coat
-garbage truck
-gasmask
-gas pump
-goblet
-go-kart
-golf ball
-golfcart
-gondola
-gong
-gown
-grand piano
-greenhouse
-grille
-grocery store
-guillotine
-hair slide
-hair spray
-half track
-hammer
-hamper
-hand blower
-hand-held computer
-handkerchief
-hard disc
-harmonica
-harp
-harvester
-hatchet
-holster
-home theater
-honeycomb
-hook
-hoopskirt
-horizontal bar
-horse cart
-hourglass
+贵宾犬
+贵宾犬
+贵宾犬
+墨西哥无毛狗
+大灰狼
+白狼
+红狼
+土狼
+澳洲野狗
+豺
+非洲猎犬
+土狼
+红狐狸
+沙狐
+北极狐
+灰狐狸
+虎斑
+虎猫
+波斯猫
+暹罗猫
+埃及猫
+美洲狮
+猞猁
+豹
+雪豹
+捷豹
+狮子
+老虎
+猎豹
+棕熊
+美国黑熊
+冰熊
+树懒熊
+猫鼬
+猫鼬
+虎甲虫
+瓢虫
+土鳖虫
+长角甲虫
+叶甲虫
+蜣螂
+犀牛甲虫
+象鼻虫
+苍蝇
+蜜蜂
+蚂蚁
+蚱蜢
+板球
+手杖
+蟑螂
+螳螂
+蝉
+叶蝉
+草蜻蛉
+蜻蜓
+豆娘
+蛱蝶
+玳眼蝶
+斑蝶
+蝴蝶
+白蝴蝶
+灰蝴蝶
+海星
+海胆
+海参
+兔子
+兔子
+安哥拉
+仓鼠
+豪猪
+松鼠
+土拨鼠
+海狸
+豚鼠
+雄鹿
+斑马
+猪
+野猪
+疣猪
+河马
+牛
+水牛
+野牛
+公羊
+大角羊
+野山羊
+大羚羊
+黑斑羚
+瞪羚
+阿拉伯骆驼
+骆驼
+黄鼠狼
+貂
+臭猫
+黑足鼬
+水獭
+臭鼬
+獾
+犰狳
+三趾树懒
+猩猩
+大猩猩
+黑猩猩
+吉本
+合趾猴
+猴
+赤猴
+狒狒
+短尾猿
+叶猴
+疣猴
+长鼻猴
+绒猴
+卷尾
+吼猴
+伶猴
+蜘蛛猴
+松鼠猴
+狐猴
+狐猴
+印度象
+非洲象
+熊猫
+熊猫
+大鳞魣
+鳗鱼
+银大马哈鱼
+刺蝶鱼
+小丑鱼
+鲟鱼
+雀鳝
+狮子鱼
+河豚
+算盘
+长袍
+学术礼服
+手风琴
+木吉他
+航空母舰
+客机
+飞艇
+坛
+救护车
+两栖动物
+模拟时钟
+养蜂场
+围裙
+垃圾桶
+突击步枪
+背包
+面包店
+平衡木
+气球
+圆珠笔
+创可贴
+班卓琴
+班尼斯特
+杠铃
+椅子
+理发店
+谷仓
+气压计
+桶
+独轮车
+棒球
+篮球
+摇篮
+巴松管
+浴帽
+浴巾
+浴缸
+旅行车
+灯塔
+烧杯
+熊皮
+啤酒瓶
+啤酒杯
+铃铛
+圣经
+自行车
+比基尼
+粘结剂
+望远镜
+禽舍
+船库
+大雪橇
+领带
+阀盖
+书柜
+书店
+瓶盖
+弓
+领结
+黄铜
+胸罩
+防浪堤
+胸甲
+扫帚
+桶
+扣子
+防弹背心
+动车
+肉店
+出租车
+大锅
+蜡烛
+大炮
+独木舟
+开罐器
+羊毛衫
+车镜
+旋转木马
+木工工具
+纸箱
+汽车轮
+提款机
+盒式磁带
+卡式录音机
+城堡
+双体船
+CD播放器
+大提琴
+移动电话
+链子
+篱外墙
+锁子甲
+链锯
+胸部
+小衣橱
+钟
+瓷柜
+圣诞袜
+教堂
+电影
+切肉刀
+岩屋
+斗篷
+阻塞
+调制器
+咖啡杯
+咖啡壶
+线圈
+密码锁
+电脑键盘
+糖果
+集装箱船
+转换器
+螺旋
+短号
+牛仔靴
+牛仔帽
+摇篮
+起重机
+安全帽
+箱
+婴儿床
+砂锅
+槌球
+拐杖
+胸甲
+大坝
+桌子
+台式电脑
+电话
+尿布
+数字时钟
+数字手表
+餐桌
+抹布
+洗碗机
+盘式制动器
+码头
+雪橇
+圆顶
+受气包
+钻井平台
+鼓
+鸡腿
+哑铃
+烤肉锅
+电风扇
+电吉他
+电力机车
+娱乐中心
+信封
+浓缩咖啡机
+粉底
+围巾
+文件
+消防船
+消防车
+防火墙
+旗杆
+长笛
+折椅
+橄榄球头盔
+叉车
+喷泉
+钢笔
+海报
+货运车
+法国号
+煎锅
+毛皮大衣
+垃圾车
+防毒面具
+气泵
+杯状
+场景
+高尔夫球
+高尔夫车
+贡多拉
+龚
+礼服
+三角钢琴
+温室
+格栅
+杂货店
+断头台
+小发夹
+发胶
+半轨
+锤子
+锤子
+手鼓风机
+手提电脑
+手帕
+硬盘
+口琴
+竖琴
+收割机
+斧
+皮套
+家庭影院
+蜂窝
+钩
+裙子
+单杠
+马马车
+沙漏
 iPod
-iron
-jack-o'-lantern
-jean
-jeep
-jersey
-jigsaw puzzle
-jinrikisha
-joystick
-kimono
-knee pad
-knot
-lab coat
-ladle
-lampshade
-laptop
-lawn mower
-lens cap
-letter opener
-library
-lifeboat
-lighter
-limousine
-liner
-lipstick
-Loafer
-lotion
-loudspeaker
-loupe
-lumbermill
-magnetic compass
-mailbag
-mailbox
-maillot
-maillot
-manhole cover
-maraca
-marimba
-mask
-matchstick
-maypole
-maze
-measuring cup
-medicine chest
-megalith
-microphone
-microwave
-military uniform
-milk can
-minibus
-miniskirt
-minivan
-missile
-mitten
-mixing bowl
-mobile home
-Model T
-modem
-monastery
-monitor
-moped
-mortar
-mortarboard
-mosque
-mosquito net
-motor scooter
-mountain bike
-mountain tent
-mouse
-mousetrap
-moving van
-muzzle
-nail
-neck brace
-necklace
-nipple
-notebook
-obelisk
-oboe
-ocarina
-odometer
-oil filter
-organ
-oscilloscope
-overskirt
-oxcart
-oxygen mask
-packet
-paddle
-paddlewheel
-padlock
-paintbrush
-pajama
-palace
-panpipe
-paper towel
-parachute
-parallel bars
-park bench
-parking meter
-passenger car
-patio
-pay-phone
-pedestal
-pencil box
-pencil sharpener
-perfume
-Petri dish
-photocopier
-pick
-pickelhaube
-picket fence
-pickup
-pier
-piggy bank
-pill bottle
-pillow
-ping-pong ball
-pinwheel
-pirate
-pitcher
-plane
-planetarium
-plastic bag
-plate rack
-plow
-plunger
-Polaroid camera
-pole
-police van
-poncho
-pool table
-pop bottle
-pot
-potter's wheel
-power drill
-prayer rug
-printer
-prison
-projectile
-projector
-puck
-punching bag
-purse
-quill
-quilt
-racer
-racket
-radiator
-radio
-radio telescope
-rain barrel
-recreational vehicle
-reel
-reflex camera
-refrigerator
-remote control
-restaurant
-revolver
-rifle
-rocking chair
-rotisserie
-rubber eraser
-rugby ball
-rule
-running shoe
-safe
-safety pin
-saltshaker
-sandal
-sarong
-sax
-scabbard
-scale
-school bus
-schooner
-scoreboard
-screen
-screw
-screwdriver
-seat belt
-sewing machine
-shield
-shoe shop
-shoji
-shopping basket
-shopping cart
-shovel
-shower cap
-shower curtain
-ski
-ski mask
-sleeping bag
-slide rule
-sliding door
-slot
-snorkel
-snowmobile
-snowplow
-soap dispenser
-soccer ball
-sock
-solar dish
-sombrero
-soup bowl
-space bar
-space heater
-space shuttle
-spatula
-speedboat
-spider web
-spindle
-sports car
-spotlight
-stage
-steam locomotive
-steel arch bridge
-steel drum
-stethoscope
-stole
-stone wall
-stopwatch
-stove
-strainer
-streetcar
-stretcher
-studio couch
-stupa
-submarine
-suit
-sundial
-sunglass
-sunglasses
-sunscreen
-suspension bridge
-swab
-sweatshirt
-swimming trunks
-swing
-switch
-syringe
-table lamp
-tank
-tape player
-teapot
-teddy
-television
-tennis ball
-thatch
-theater curtain
-thimble
-thresher
-throne
-tile roof
-toaster
-tobacco shop
-toilet seat
-torch
-totem pole
-tow truck
-toyshop
-tractor
-trailer truck
-tray
-trench coat
-tricycle
-trimaran
-tripod
-triumphal arch
-trolleybus
-trombone
-tub
-turnstile
-typewriter keyboard
-umbrella
-unicycle
-upright
-vacuum
-vase
-vault
-velvet
-vending machine
-vestment
-viaduct
-violin
-volleyball
-waffle iron
-wall clock
-wallet
-wardrobe
-warplane
-washbasin
-washer
-water bottle
-water jug
-water tower
-whiskey jug
-whistle
-wig
-window screen
-window shade
-Windsor tie
-wine bottle
-wing
-wok
-wooden spoon
-wool
-worm fence
-wreck
-yawl
-yurt
-web site
-comic book
-crossword puzzle
-street sign
-traffic light
-book jacket
-menu
-plate
-guacamole
-consomme
-hot pot
-trifle
-ice cream
-ice lolly
-French loaf
-bagel
-pretzel
-cheeseburger
-hotdog
-mashed potato
-head cabbage
-broccoli
-cauliflower
-zucchini
-spaghetti squash
-acorn squash
-butternut squash
-cucumber
-artichoke
-bell pepper
-cardoon
-mushroom
-Granny Smith
-strawberry
-orange
-lemon
-fig
-pineapple
-banana
-jackfruit
-custard apple
-pomegranate
-hay
-carbonara
-chocolate sauce
-dough
-meat loaf
-pizza
-potpie
-burrito
-red wine
-espresso
-cup
-eggnog
-alp
-bubble
-cliff
-coral reef
-geyser
-lakeside
-promontory
-sandbar
-seashore
-valley
-volcano
-ballplayer
-groom
-scuba diver
-rapeseed
-daisy
-yellow lady's slipper
-corn
-acorn
-hip
-buckeye
-coral fungus
-agaric
-gyromitra
-stinkhorn
-earthstar
-hen-of-the-woods
-bolete
-ear
-toilet tissue
+铁
+行踪不定的人
+牛仔裤
+吉普车
+球衣
+拼图
+黄包车
+操纵杆
+和服
+护膝
+结
+外套
+包
+灯罩
+移动PC
+割草机
+镜头盖
+开信刀
+图书馆
+救生艇
+打火机
+豪华轿车
+衬管
+口红
+拖鞋
+乳液
+扬声器
+放大镜
+锯木厂
+罗盘
+邮箱
+邮箱
+邮差
+邮差
+井盖
+马拉卡
+马林巴琴
+面具
+火柴
+花柱
+迷宫
+量杯
+药品箱
+巨石
+麦克风
+微波
+军装
+牛奶
+汽车
+迷你裙
+小货车
+导弹
+手套
+碗
+活动房屋
+T型车
+调制解调器
+修道院
+监控
+车
+砂浆
+学位帽
+清真寺
+蚊帐
+小型摩托车
+山地自行车
+山帐篷
+鼠标
+捕鼠器
+搬运车
+喷嘴
+指甲
+护颈支架
+项链
+乳头
+笔记本
+方尖塔
+双簧管
+陶笛
+里程表
+过滤器
+器官
+示波器
+半裙
+牛车
+氧气面罩
+包
+桨
+明轮
+挂锁
+画笔
+睡衣
+宫殿
+排箫
+纸巾
+降落伞
+双杠
+长椅
+停车费
+乘用车
+天井
+付费电话
+基座
+铅笔盒
+卷笔刀
+香水
+培养皿
+影印机
+叉子
+皮克尔豪伯
+栅栏
+皮卡
+码头
+储蓄罐
+药瓶子
+枕头
+乒乓球
+纸风车
+海盗
+投手
+飞机
+天文馆
+塑料袋
+板架
+犁
+柱塞
+宝丽来相机
+杆
+警车
+雨披
+台球桌
+瓶子
+锅
+陶工旋盘
+电钻
+祈祷地毯
+打印机
+监狱
+弹
+投影仪
+妖精
+出气筒
+钱包
+羽毛
+被子
+赛车手
+球拍
+散热器
+广播
+射电望远镜
+雨桶
+休闲车
+卷
+反射式照相机
+冰箱
+远程控制
+餐厅
+左轮手枪
+步枪
+摇椅
+烤肉店
+橡皮
+橄榄球
+条例
+跑步鞋
+保险箱
+安全别针
+盐瓶
+凉鞋
+布裙
+萨克斯
+刀鞘
+称
+校车
+帆船
+记分板
+屏幕
+螺杆
+螺丝刀
+安全带
+缝纫机
+盾
+鞋店
+商事
+购物篮
+购物车
+铲
+浴帽
+浴帘
+滑雪
+滑雪面罩
+睡袋
+计算尺
+推拉门
+槽
+通气管
+雪地
+扫雪机
+给皂器
+足球
+袜子
+太阳能碟
+宽边帽
+汤碗
+空格键
+加热器
+航天飞机
+抹刀
+快艇
+蜘蛛网
+主轴
+跑车
+聚光灯
+舞台
+蒸汽机车
+钢拱桥
+钢桶
+听诊器
+小偷
+石墙
+秒表
+炉子
+过滤器
+有轨电车
+担架
+长沙发
+佛塔
+潜艇
+西装
+日晷
+太阳镜
+太阳镜
+防晒霜
+吊桥
+拭子
+运动衫
+泳裤
+秋千
+开关
+注射器
+台灯
+坦克
+磁带放音机
+茶壶
+泰迪
+电视
+网球
+浓密的头发
+剧院窗帘
+顶针
+长尾鲨
+宝座
+瓦屋顶
+烤面包机
+商店
+马桶座圈
+火炬
+图腾柱
+拖车
+玩具店
+拖拉机
+拖车
+托盘
+风衣
+三轮车
+三体帆船
+三脚架
+凯旋门
+无轨电车
+长号
+浴缸
+旋转栅门
+键盘
+伞
+独轮脚踏车
+直立
+真空
+花瓶
+库
+天鹅绒
+自动售货机
+礼服
+高架桥
+小提琴
+排球
+华夫饼铁
+挂钟
+钱包
+衣柜
+战机
+脸盆
+垫圈
+水瓶
+水壶
+水塔
+威士忌壶
+口哨
+假发
+纱窗
+遮光窗帘
+温莎领带
+酒瓶
+翼
+锅
+木匙
+羊毛
+栅栏
+沉船
+小帆船
+圆顶帐篷
+网站
+漫画书
+字谜游戏
+路标
+红绿灯
+夹克
+菜单
+板
+色拉酱
+肉汤
+火锅
+蛋糕
+冰淇淋
+冰棍
+法国面包
+百吉饼
+椒盐卷饼
+芝士汉堡
+热狗
+土豆泥
+卷心菜
+西兰花
+菜花
+西葫芦
+南瓜
+青南瓜
+冬南瓜
+黄瓜
+洋蓟
+甜椒
+刺棘蓟
+蘑菇
+绿苹果
+草莓
+橙色
+柠檬
+无花果
+菠萝
+香蕉
+菠萝蜜
+奶油苹果
+石榴
+干草
+碳酸钙
+巧克力酱
+面团
+肉面包
+披萨
+肉馅饼
+煎饼
+红酒
+咖啡
+杯
+蛋酒
+阿尔卑斯山
+泡沫
+悬崖
+珊瑚礁
+喷泉
+湖边
+海角
+沙洲
+海滨
+谷
+火山
+棒球手
+新郎
+潜水员
+油菜籽
+雏菊
+拖鞋
+玉米
+橡子
+河马
+七叶树
+珊瑚菌
+木耳
+陀螺仪
+臭角
+地球之星
+母鸡
+牛肝菌
+耳朵
+卫生纸

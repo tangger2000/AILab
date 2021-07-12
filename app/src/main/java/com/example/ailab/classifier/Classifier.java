@@ -82,7 +82,7 @@ public abstract class Classifier {
         printTopKLabels(leftBuilder, rightBuilder, softmax);
         // Print the results.
         long duration = endTime - startTime;
-        SpannableString leftSpan = new SpannableString("Inference Time");
+        SpannableString leftSpan = new SpannableString("推理时间");
         SpannableString rightSpan = new SpannableString(duration + "ms");
         leftSpan.setSpan(new ForegroundColorSpan(android.graphics.Color.LTGRAY), 0, leftSpan.length(), 0);
         rightSpan.setSpan(new ForegroundColorSpan(android.graphics.Color.LTGRAY), 0, rightSpan.length(), 0);
